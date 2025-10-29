@@ -13,4 +13,12 @@ for _, row in cards.iterrows():
     user_input = input(f"{word}: ")
     if user_input.lower() == "q":
         break
+
+    possible = str.split(definition, ", ")
+
+    if user_input not in possible:
+        print("Incorrect")
+    else:
+        print("Correct")
+        
     print(f"Definition: {definition}\n")

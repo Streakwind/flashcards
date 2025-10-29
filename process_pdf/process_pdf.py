@@ -12,15 +12,11 @@ pos_map = {
     "enclitic": "enclitic",
     "pronoun": "pron.",
     "noun (proper)": "proper n.",
+    "interjection": "interj."
 }
 
-if (df["Part of Speech"].map(pos_map) is not None):
-    df["Definition"] = "(" + df["Part of Speech"].map(pos_map) +")" + " " + df["Definition"]
-else:
-    raise ValueError(f"""Unknown part of speech found: {df["Part of Speech"]}""")
+df["Definition"] = "(" + df["Part of Speech"].map(pos_map) +")" + " " + df["Definition"]
 
 df = df[["Vocabulary", "Definition"]]
 
-df.to_csv("latin.csv", index=False)
-
-print(df.head())
+df.to_csv("../sets/latin.csv", index=False)
