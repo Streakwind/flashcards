@@ -21,6 +21,6 @@ else:
 
 df = df[["Vocabulary", "Definition"]]
 
-df.to_csv("vocab_final.csv", index=False)
+df.to_csv("ap_latin.csv", index=False)
 
 print(df.head())
