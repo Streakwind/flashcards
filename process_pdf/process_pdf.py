@@ -15,7 +15,14 @@ pos_map = {
     "interjection": "interj."
 }
 
-df["Definition"] = "(" + df["Part of Speech"].map(pos_map) +")" + " " + df["Definition"]
+def map_pos(pos_string):
+    if pd.isna(pos_string):
+        return ""
+    parts = [p.strip().lower() for p in pos_string.split("/")]
+    mapped = [pos_map.get(p, p) for p in parts]
+    return "/".join(mapped)
+
+df["Definition"] = "(" + df["Part of Speech"].apply(map_pos) + ") " + df["Definition"]
 
 df = df[["Vocabulary", "Definition"]]
 
