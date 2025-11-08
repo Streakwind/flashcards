@@ -26,4 +26,7 @@ df["Definition"] = "(" + df["Part of Speech"].apply(map_pos) + ") " + df["Defini
 
 df = df[["Vocabulary", "Definition"]]
 
-df.to_csv("../sets/latin.csv", index=False)
+df["Vocabulary"] = df["Vocabulary"].str.replace(r"[\r\n]+", " ", regex=True)
+df["Definition"] = df["Definition"].str.replace(r"[\r\n]+", " ", regex=True)
+
+df.to_csv("../sets/latin.csv", sep="\t", index=False)
