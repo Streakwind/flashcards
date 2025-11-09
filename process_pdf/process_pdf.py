@@ -29,4 +29,4 @@ df = df[["Vocabulary", "Definition"]]
 df["Vocabulary"] = df["Vocabulary"].str.replace(r"[\r\n]+", " ", regex=True)
 df["Definition"] = df["Definition"].str.replace(r"[\r\n]+", " ", regex=True)
 
-df.to_csv("../sets/latin.csv", sep="\t", index=False)
+df.to_csv("../sets/latin.tsv", sep="\t", index=False)
